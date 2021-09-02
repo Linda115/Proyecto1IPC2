@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="Css/opMateriaPrima.css" type="text/css"/>
+
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <div class="container">
+            
+            <form  method="POST" action="inscribir">
+                <label >Escriba los caracteres de la nueva Materia Prima a registrar en la base de datos </label>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="tipo">Nombre o tipo de la Materia Prima</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="tipo" name="tipo" placeholder="Tipo/Nombre">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="costo">Costo de la Materia Prima</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="number" step="0.01" id="costo" name="costo" placeholder="Costo">
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Registra  a base de Datos</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

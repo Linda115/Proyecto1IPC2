@@ -1,0 +1,12 @@
+com\mycompany\proyeco1\ConeccionDB\PostInscribirDatos.class
+com\mycompany\proyeco1\ConeccionDB\PostRegistrarUsuario.class
+java\PostEnsamble.class
+com\mycompany\proyeco1\ConeccionDB\RegistrarMateriaPrima.class
+java\PostEliminarMateriaPrima.class
+java\ResultMessage.class
+com\mycompany\proyeco1\ConeccionDB\BuscarCliente.class
+com\mycompany\proyeco1\ConeccionDB\CadenaDeDatos.class
+com\mycompany\proyeco1\ConeccionDB\ComprobarUsuario.class
+com\mycompany\proyeco1\ConeccionDB\EliminarMateriaPrimaDB.class
+com\mycompany\proyeco1\ConeccionDB\Login.class
+com\mycompany\proyeco1\ConeccionDB\RegistrarEnsamble.class

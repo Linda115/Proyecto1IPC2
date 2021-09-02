@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="Css/Login.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div>
+            <form  method="post" name="form1"  action="iniciar-Sesion"  >
+                <label for="nombreUsuario">Usuario</label>
+                <input type="text" id="Nombre" name="Nombre" placeholder="Usuario">
+
+                <label for="cont">Contraseña</label>
+                <input type="password" pattern=".{6,}"  id="contraseña" name="contraseña" placeholder="Contraseña">
+
+                <label for="Area" name = "area">Area a la que desea entrar</label>
+                <select id="area" name="area">
+                    <option id= "1" name = "1" value="1">Area de Fabricación</option>
+                    <option id= "2" name = "2" value="2">Area de producción de ventas</option>
+                    <option id= "3" name = "3" value="3">Area financiera y administración</option>
+                </select>
+
+                <div class="row">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Inicia Sesión</button>
+                </div>
+            </form>
+        </div>
+
+
+    </body>
+</html>
