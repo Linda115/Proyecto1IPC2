@@ -20,24 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "InscribirDatos", urlPatterns = "/inscribir")
 public class PostInscribirDatos extends HttpServlet {
 
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-    private static final String URL_MYSQL = "jdbc:mariadb://localhost:3307/mimuebleria";
     private static final String baseDatos = "materiaprima";
-
-    public static Connection getConection(){
-        Connection connection = null;
-
-        try{
-            Class.forName("org.mariadb.jdbc.Driver");
-            connection = DriverManager.getConnection(URL_MYSQL, USER, PASSWORD);
-            System.out.print("si entro");
-            
-        } catch(ClassNotFoundException | SQLException e){
-            System.out.print(e);
-        }
-        return connection;
-    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -50,13 +33,16 @@ public class PostInscribirDatos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection coneccion = PostInscribirDatos.getConection();
+        
+        ConeccionBD coneccionBd = new ConeccionBD();
+        
+       
+        Connection coneccion = coneccionBd.getConection();
         
             
         try {
-            PreparedStatement insert = coneccion
-                    .prepareStatement(String.format(
-                            "INSERT INTO %s (Tipo, Costo, Cantidad) VALUES(?,?,?)", baseDatos
+            PreparedStatement insert = coneccion.prepareStatement(String.format(
+                            "INSERT INTO %s (Tipo, Precio, Cantidad) VALUES(?,?,?)", baseDatos
                     ));
             String tipo = request.getParameter("tipo");
             float costo = Float.parseFloat(request.getParameter("costo"));
@@ -66,11 +52,12 @@ public class PostInscribirDatos extends HttpServlet {
 
             insert.executeUpdate();
             
-            response.sendRedirect(String.format("respuestaAccion.jsp?result=%s&errorMsg=&error=false", "hecho"));
+            response.sendRedirect(String.format("JSP/respuestaAccion.jsp?result=%s&errorMsg=&error=false", "hecho"));
             
 
         } catch (SQLException e) {
-            response.sendRedirect(String.format("respuestaAccion.jsp?result=&errorMsg=%s&error=true", e.getMessage()));
+            
+            response.sendRedirect(String.format("JSP/respuestaAccion.jsp?result=&errorMsg=%s&error=true", ErroresdeConexion.MessageError(e.getErrorCode(), e.getMessage())));
             
             
         } finally {
@@ -79,7 +66,8 @@ public class PostInscribirDatos extends HttpServlet {
                     coneccion.close();
                     
                 } catch (SQLException ex) {
-
+                  response.sendRedirect(String.format("JSP/respuestaAccion.jsp?result=&errorMsg=%s&error=true", ErroresdeConexion.MessageError(ex.getErrorCode(), ex.getMessage())));
+              
                 }
             }
         }

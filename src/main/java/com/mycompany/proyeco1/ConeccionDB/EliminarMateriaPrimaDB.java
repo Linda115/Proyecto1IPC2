@@ -15,7 +15,7 @@ public class EliminarMateriaPrimaDB {
 
     private static final String USER = "root";
     private static final String PASSWORD = "";
-    private static final String URL_MYSQL = "jdbc:mariadb://localhost:3307/mimuebleria";
+    private static final String URL_MYSQL = "jdbc:mysql://localhost:3306/mymuebleria";
     private static final String baseDatos = "materiaprima";
  
     

@@ -16,7 +16,7 @@
         
         <<div class="container">
 
-            <form  method="POST" action="/buscarcliente">
+            <form  method="POST" action="buscarcliente">
                 <label >Escriba los caracteres de la venta</label>               
                 <div class="row">
                     <div class="col-25">

@@ -15,8 +15,8 @@
 %>
 <%
     result = request.getParameter("result");
-    mensajeError = request.getParameter("mensaje-error");
-    hayError = Boolean.valueOf(request.getParameter("hay-error"));
+    mensajeError = request.getParameter("errorMsg");
+    hayError = Boolean.valueOf(request.getParameter("error"));
     
     pageContext.setAttribute("bandera", hayError);
 %>
@@ -48,7 +48,7 @@
                     %>
 
 
-                    <a class="btn btn-outline-primary" href="index.html">Regresar!</a>
+                    <a class="btn btn-outline-primary" href="../index.html">Regresar!</a>
                 </div>
             </div>
         </div>

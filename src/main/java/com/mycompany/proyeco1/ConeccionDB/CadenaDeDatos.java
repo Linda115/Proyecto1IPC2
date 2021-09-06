@@ -20,16 +20,16 @@ public class CadenaDeDatos {
      * @param NombreColumna
      * @return
      */
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-    private static final String URL_MYSQL = "jdbc:mariadb://localhost:3307/mimuebleria";
+    private static final String USER = "administradorMuebe";
+    private static final String PASSWORD = "admi2008";
+    private static final String URL_MYSQL = "jdbc:mysql://localhost:3306/mymuebleria";
     private static final String baseDatos = "materiaprima";
 
     public static List<String> getDatosColumna(String NombreTabla, String NombreColumna) {
         Connection connection = null;
 
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL_MYSQL, USER, PASSWORD);
             System.out.print("si entro");
 
@@ -315,7 +315,7 @@ public class CadenaDeDatos {
             try {
                 PreparedStatement recordQuery;
                 recordQuery = connection
-                        .prepareStatement(String.format("SELECT  FROM %s WHERE ? = \"?\"", NombreTabla));
+                        .prepareStatement(String.format("SELECT * FROM %s WHERE ? = \"?\"", NombreTabla));
                 recordQuery.setString(1, NombreCondicional);
                 recordQuery.setString(2, Condicional);
 
@@ -359,9 +359,52 @@ public class CadenaDeDatos {
             try {
                 PreparedStatement recordQuery;
                 recordQuery = connection
-                        .prepareStatement(String.format("SELECT  FROM %s WHERE ? = \"?\"", NombreTabla));
+                        .prepareStatement(String.format("SELECT * FROM %s WHERE clientes = ?", NombreTabla));
                 recordQuery.setString(1, NombreCondicional);
                 recordQuery.setString(2, Condicional);
+
+                result = recordQuery.executeQuery();
+
+                
+
+                // while (result.next()) {
+                //}
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+
+                }
+
+            }
+        } else {
+            System.out.println("La coneccion es nula ");
+        }
+        return result;
+    }
+    
+    public static ResultSet getDatosColumnaCondicional(String NombreTabla, long Condicional, String NombreCondicional) {
+        int resp = 0;
+        Connection connection = null;
+
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            connection = DriverManager.getConnection(URL_MYSQL, USER, PASSWORD);
+            System.out.print("si entro");
+
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.print(e);
+        }
+        ResultSet result = null;
+        if (connection != null) {
+            try {
+                PreparedStatement recordQuery;
+                recordQuery = connection
+                        .prepareStatement(String.format("SELECT * FROM %s WHERE NIT = ?", NombreTabla));
+                recordQuery.setLong(1, Condicional);
 
                 result = recordQuery.executeQuery();
 

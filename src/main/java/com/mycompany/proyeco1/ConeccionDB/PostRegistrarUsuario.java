@@ -20,27 +20,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Linda Monterroso
  */
-@WebServlet(name = "RegistrarUsuario", urlPatterns = "/RegistrarUsuario")
+@WebServlet(name = "RegistrarUsuario", urlPatterns = "/JSP/RegistrarUsuario")
 public class PostRegistrarUsuario extends HttpServlet {
     
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-    private static final String URL_MYSQL = "jdbc:mariadb://localhost:3307/mimuebleria";
+    
     private static final String baseDatos = "usuario";
 
-    public static Connection getConection(){
-        Connection connection = null;
-
-        try{
-            Class.forName("org.mariadb.jdbc.Driver");
-            connection = DriverManager.getConnection(URL_MYSQL, USER, PASSWORD);
-            System.out.print("si entro");
-            
-        } catch(ClassNotFoundException | SQLException e){
-            System.out.print(e);
-        }
-        return connection;
-    }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -53,7 +39,8 @@ public class PostRegistrarUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Connection coneccion = PostInscribirDatos.getConection();
+        ConeccionBD coneccionBd = new ConeccionBD();
+        Connection coneccion = coneccionBd.getConection();
         
             
         try {

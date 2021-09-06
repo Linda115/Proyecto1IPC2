@@ -22,7 +22,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">        
         <title>Muebles ensamblados</title>
     </head>
@@ -40,8 +40,9 @@
                 </tr>
                 <%ResultSet result = null;
                     if (ordenar == false) {
-                        result = CadenaDeDatos.getTabla("ensamblemueble");
-                        while (result.next()) {%>
+                        result = CadenaDeDatos.getTabla("muebleensamblado");
+                        if (result != null) {
+                            while (result.next()) {%>
                 <tr>
                     <td><%=result.getString("Fecha")%></td>
                     <td><%=result.getString("Usuario")%></td>
@@ -49,10 +50,11 @@
                     <td><%=result.getString("ID")%></td>
                     <td><%=result.getString("Tipo")%></td>
                 </tr>
-                <%}%>
+                <%}
+                    }%>
                 <%} else {
                     if (menorMayor) {%>
-                result = CadenaDeDatos.getTablaASC("ensamblemueble","Fecha");
+                result = CadenaDeDatos.getTablaASC("muebleensamblado","Fecha");
                 while(result.next()){%>
                 <tr>
                     <td><%=result.getString("Fecha")%></td>
@@ -64,7 +66,7 @@
                 <%}%>
                 <%}
                     if (mayorMenor) {%>
-                result = CadenaDeDatos.getTablaDESC("ensamblemueble","Fecha");
+                result = CadenaDeDatos.getTablaDESC("muebleensamblado","Fecha");
                 while(result.last()){%>
                 <tr>
                     <td><%=result.getString("Fecha")%></td>

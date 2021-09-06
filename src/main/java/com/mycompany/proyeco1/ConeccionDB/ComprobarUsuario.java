@@ -16,14 +16,14 @@ public class ComprobarUsuario {
     public static final String tabla = "usuario";
     private static final String USER = "root";
     private static final String PASSWORD = "";
-    private static final String URL_MYSQL = "jdbc:mariadb://localhost:3307/mimuebleria";
+    private static final String URL_MYSQL = "jdbc:mysql://localhost:3306/mymuebleria";
     private static final String baseDatos = "materiaprima";
 
     public static boolean ExisteUsusario(String nombre) throws SQLException {
         Connection connection = null;
 
         try {
-            Class.forName("org.mariadb.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL_MYSQL, USER, PASSWORD);
             System.out.print("si entro");
 

@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar Materia Prima</title>
+        <link rel="stylesheet" href="../Css/tablas.css" type="text/css"/>
     </head>
     <body>
         <h1>Materia Prima</h1>
@@ -24,17 +25,15 @@
                     <th>Cantidad</th>
                 </tr>
                 <%ResultSet result = CadenaDeDatos.getTabla("materiaprima");
-                while(result.next()){%>
+                    while (result.next()) {%>
                 <tr>
                     <td><%=result.getString("Tipo")%></td>
-                    <td><%=result.getString("Costo")%></td>
+                    <td><%=result.getString("Precio")%></td>
                     <td><%=result.getString("Cantidad")%></td>
                 </tr>
                 <%}%>
-                </div>
-                <div class="row">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Ensamblar mueble y registrarlo a la sala de ventas</button>
-                </div>
+
+                
             </table>
         </form>
     </body>

@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consulta de muebles a la venta</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        
+
     </head>
     <body>
         <h1>Muebles en Venta</h1>
@@ -23,16 +23,18 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Cantidad</th>
-                    
+
                 </tr>
                 <%ResultSet result = CadenaDeDatos.getTabla("mueblesventa");
-                while(result.next()){%>
+                    if (result != null) {
+                        while (result.next()) {%>
                 <tr>
                     <td><%=result.getString("Nombre")%></td>
                     <td><%=result.getString("Cantidad")%></td>
-                    
+
                 </tr>
-                <%}%>
+                <%}
+                    }%>
                 </div>
                 <div class="row">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Ensamblar mueble y registrarlo a la sala de ventas</button>

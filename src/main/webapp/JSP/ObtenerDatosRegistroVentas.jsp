@@ -3,12 +3,12 @@
     Created on : 31 ago 2021, 11:44:01
     Author     : Linda Monterroso
 --%>
-%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%!String Nombre = "";
-    int nit = 0;
+    String nit = "";
     String Direccion = "";
     String Departamento = "";
     String Municipio = "";
@@ -16,7 +16,7 @@
 %>
 <%
     Nombre = request.getParameter("nombre");
-    nit = Integer.valueOf(request.getParameter("nit"));
+    nit = request.getParameter("nit");
     Direccion = request.getParameter("direccion");
     Departamento = request.getParameter("departamento");
     Municipio = request.getParameter("municipio");
@@ -31,7 +31,7 @@
         <title>Crear factura</title>
     </head>
     <body>
-        <% if (hayError) {%>
+        <% if (hayError==false) {%>
         <h1>Creando Factura</h1>
         <<div class="container">
             <table id="customers">
@@ -80,10 +80,11 @@
         </div>
         <%} else {%>
         <h1>No existe el cliente con ese NIT</h1>
-        <form  method="POST" action="RegistrarUsuario">
+        <form  method="POST" action="RegistrarCliente.jsp">
              <div class="row">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Registrar cliente a la base de datos</button>
             </div>
-        </form>  
+        </form> 
+        <%}%>
     </body>
 </html>

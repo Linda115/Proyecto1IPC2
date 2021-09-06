@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Consultar matera prima por agotarse o agotada</title>
+        <link rel="stylesheet" href="../Css/tablas.css" type="text/css"/>
     </head>
     <body>
         <h1>Materia Prima</h1>
@@ -27,7 +28,7 @@
                 while(result.next()){%>
                 <tr>
                     <td><%=result.getString("Tipo")%></td>
-                    <td><%=result.getString("Costo")%></td>
+                    <td><%=result.getString("Precio")%></td>
                     <td><%=result.getString("Cantidad")%></td>
                 </tr>
                 <%}%>
